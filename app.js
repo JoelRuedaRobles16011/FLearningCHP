@@ -7,30 +7,29 @@ firebase.initializeApp({
 
 var db = firebase.firestore();
 
-document.querySelector('#lista_categorias').innerHTML = '';
-
 db.collection("categoria").onSnapshot((querySnapshot) => {
+    document.querySelector('#lista_categorias').innerHTML = '';
     querySnapshot.forEach((doc) => {
         document.querySelector('#lista_categorias').innerHTML += `
-            <a class="dropdown-item" href="/categoria/${doc.id}">${doc.data().nombre}</a>
+            <a class="dropdown-item" href="/FLearningCHP/categoria/${doc.id}">${doc.data().nombre}</a>
         `;
     });
 });
 
 
 page('/FLearningCHP/', index);
-page('FLearningCHP/categoria/:categoria', categoria);
-page('FLearningCHP/materia/:materia', materia);
+page('/FLearningCHP/categoria/:categoria', categoria);
+page('/FLearningCHP/materia/:materia', materia);
 page('*', notfound);
 page();
 
 function index() {
-    document.querySelector('main').innerHTML = '';
-    document.querySelector('main').innerHTML += `<div id="contentMain" class="card-columns"></div>`
 
     db.collection("categoria").onSnapshot((querySnapshot) => {
+        document.querySelector('main').innerHTML = '';
+        document.querySelector('main').innerHTML += `<div id="contentMain" class="card-columns"></div>`;
+        
         querySnapshot.forEach((doc) => {
-            console.log(` => ${doc.id}`);
             document.querySelector('#contentMain').innerHTML += `
                 <div class="card shadow">
                     <img src="${doc.data().url_image}" class="card-img-top" alt="...">
@@ -38,7 +37,7 @@ function index() {
                         <h4 class="card-title">${doc.data().nombre}</h4>
                         <p class="card-text">${doc.data().descripcion}</p>
                         <div class="text-right">
-                            <a href="/categoria/${doc.id}" class="btn btn-success">Mostrar repositorio</a>
+                            <a href="/FLearningCHP/categoria/${doc.id}" class="btn btn-success">Mostrar repositorio</a>
                         </div>                        
                     </div>
                 </div>
