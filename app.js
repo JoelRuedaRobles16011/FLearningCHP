@@ -7,9 +7,8 @@ firebase.initializeApp({
 
 var db = firebase.firestore();
 
-document.querySelector('#lista_categorias').innerHTML = '';
-
 db.collection("categoria").onSnapshot((querySnapshot) => {
+    document.querySelector('#lista_categorias').innerHTML = '';
     querySnapshot.forEach((doc) => {
         document.querySelector('#lista_categorias').innerHTML += `
             <a class="dropdown-item" href="/FLearningCHP/categoria/${doc.id}">${doc.data().nombre}</a>
@@ -25,12 +24,12 @@ page('*', notfound);
 page();
 
 function index() {
-    document.querySelector('main').innerHTML = '';
-    document.querySelector('main').innerHTML += `<div id="contentMain" class="card-columns"></div>`
 
     db.collection("categoria").onSnapshot((querySnapshot) => {
+        document.querySelector('main').innerHTML = '';
+        document.querySelector('main').innerHTML += `<div id="contentMain" class="card-columns"></div>`;
+        
         querySnapshot.forEach((doc) => {
-            console.log(` => ${doc.id}`);
             document.querySelector('#contentMain').innerHTML += `
                 <div class="card shadow">
                     <img src="${doc.data().url_image}" class="card-img-top" alt="...">
