@@ -12,7 +12,7 @@ document.querySelector('#lista_categorias').innerHTML = '';
 db.collection("categoria").onSnapshot((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         document.querySelector('#lista_categorias').innerHTML += `
-            <a class="dropdown-item" href="/categoria/${doc.id}">${doc.data().nombre}</a>
+            <a class="dropdown-item" href="/FLearningCHP/categoria/${doc.id}">${doc.data().nombre}</a>
         `;
     });
 });
@@ -38,7 +38,7 @@ function index() {
                         <h4 class="card-title">${doc.data().nombre}</h4>
                         <p class="card-text">${doc.data().descripcion}</p>
                         <div class="text-right">
-                            <a href="/categoria/${doc.id}" class="btn btn-success">Mostrar repositorio</a>
+                            <a href="/FLearningCHP/categoria/${doc.id}" class="btn btn-success">Mostrar repositorio</a>
                         </div>                        
                     </div>
                 </div>
