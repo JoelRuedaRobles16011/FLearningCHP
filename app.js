@@ -19,8 +19,8 @@ db.collection("categoria").onSnapshot((querySnapshot) => {
 
 
 page('/FLearningCHP/', index);
-page('FLearningCHP/categoria/:categoria', categoria);
-page('FLearningCHP/materia/:materia', materia);
+page('/FLearningCHP/categoria/:categoria', categoria);
+page('/FLearningCHP/materia/:materia', materia);
 page('*', notfound);
 page();
 
