@@ -6,15 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Free Learning CHP</title>
-    <link rel="icon" href="icons/neural.png">
+    <link rel="icon" href="">
 
     <!-- Bootstrap Sketchy -->
     <!-- <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/sketchy/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-2kOE+STGAkgemIkUbGtoZ8dJLqfvJ/xzRnimSkQN7viOfwRvWseF7lqcuNXmjwrL" crossorigin="anonymous"> -->
 
+    <!-- Bootstrap Lux -->
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-oOs/gFavzADqv3i5nCM+9CzXe3e5vXLXZ5LZ7PplpsWpTCufB7kqkTlC9FtZ5nJo" crossorigin="anonymous"> -->
+
+    <!-- Bootstrap Flaty -->
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/flatly/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-yrfSO0DBjS56u5M+SjWTyAHujrkiYVtRYh2dtB3yLQtUz3bodOeialO59u5lUCFF" crossorigin="anonymous">
+
     <!-- Bootstrap styles -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
     <!-- Pages.js -->
     <script src="page.js"></script>
@@ -23,14 +31,30 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
 
+    <style>
+        .objetfit>img {
+            width: 200px;
+            height: 200px;
+            object-fit: none;
+            background-color: black;
+            border: 3px solid #ff9daa;
+        }
+
+        .objetfitcover>img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+    </style>
+
 </head>
 
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-                <img src="icons/neural.png" class="mr-3 my-2" alt="" width="50px">
+                <img src="" class="mr-3 my-2" alt="" width="50px">
                 <a class="navbar-brand" href="/FLearningCHP/">FLearning CUESHP</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -49,7 +73,7 @@
                                 Categorias
                             </a>
                             <div id="lista_categorias" class="dropdown-menu" aria-labelledby="categoriasDropdown">
-                            <!--
+                                <!--
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <div class="dropdown-divider"></div>
@@ -57,9 +81,9 @@
                             -->
                             </div>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="routes/atribuciones.html">Atribuciones</a>
-                        </li>
+                        </li> -->
                         <!--
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -75,30 +99,7 @@
     </header>
 
     <main class="container my-3">
-        <!-- <div id="contentMain" class="row">
 
-        </div> -->
-
-        <!-- <div class="row">
-            <div class="card col-lg-4 col-sm-6 col-12 shadow m-1">
-                <img src="images/cards/steve-jobs-conference.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h4 class="card-title">Conferencias motivacionales</h4>
-                    <p class="card-text">Conoce los secretos de las personas que han cambiado el mundo.</p>
-                    <a href="routes/conferencias_motivacionales.html" class="btn btn-success">Mostrar repositorio</a>
-                </div>
-            </div>
-
-            <div class="card col-lg-4 col-sm-6 col-12 shadow m-1">
-                <img src="images/cards/algebra-wallpaper.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h4 class="card-title">Algebra</h4>
-                    <p class="card-text">No te quedes atras y aprende las bases de las matematicas que hacen cambiar al
-                        mundo.</p>
-                    <a href="routes/algebra.html" class="btn btn-success">Mostrar repositorio</a>
-                </div>
-            </div>
-        </div> -->
 
     </main>
 
