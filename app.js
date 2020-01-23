@@ -24,10 +24,24 @@ page('/FLearningCHP/materia/:materia', materia);
 page();
 
 function index() {
+    document.querySelector('main').innerHTML += `<div id="videoMain" class="mb-5"></div>`;
+
+    db.collection("presentacion").onSnapshot((querySnapshot) => {
+        document.querySelector('#videoMain').innerHTML = '';
+
+        querySnapshot.forEach((doc) => {
+            document.querySelector('#videoMain').innerHTML += `
+            <div class="embed-responsive embed-responsive-16by9">
+                ${doc.data().frame}
+            </div>
+            `;
+        });
+    });
+
+    document.querySelector('main').innerHTML += `<div id="contentMain" class="card-columns"></div>`;
 
     db.collection("categoria").onSnapshot((querySnapshot) => {
-        document.querySelector('main').innerHTML = '';
-        document.querySelector('main').innerHTML += `<div id="contentMain" class="card-columns"></div>`;
+        document.querySelector('#contentMain').innerHTML = '';
 
         querySnapshot.forEach((doc) => {
             document.querySelector('#contentMain').innerHTML += `
@@ -53,36 +67,36 @@ function categoria(ctx) {
         .then(function (doc) {
 
             document.querySelector('main').innerHTML = `
-                <div>
-                    <div class="card">
-                        <div class="objetfitcover">
-                            <img class="card-img-top"
-                                src="${doc.data().url_image}"
-                                alt="">
-                                <div class="card-img-overlay m-5 p-5 text-center text-light" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 5px;">
-                                <div class="card-title">
-                                    <h3 class="text-light">${doc.data().nombre}</h3>
-                                </div>
-                                <div class="card-text">
-                                    <small>${doc.data().descripcion}</small>
-                                </div>
+            <div class="card">
+                <div class="objetfitcover">
+                    <img class="card-img-top"
+                        src="${doc.data().url_image}"
+                        alt="">
+                    <div class="card-body">
+                        <div class="card-title text-center">
+                            <h3>${doc.data().nombre}</h3>
+                            <div class="card-text">
+                                <p>${doc.data().descripcion}</p>
                             </div>
                         </div>
-                    </div>
-                    <div id="lista_materias" class="list-group text-dark">
-                                
+                        <div id="lista_materias" class="list-group text-dark">
+
+                        </div>
                     </div>
                 </div>
+            </div>
             `;
         })
         .catch(function (error) {
             console.log(error);
         });
 
+        console.log(ctx.params.categoria);
 
     db.collection("materia").where("fkid_categoria", "==", ctx.params.categoria).get()
         .then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
+                
                 // doc.data() is never undefined for query doc snapshots
                 document.querySelector('#lista_materias').innerHTML += `
                 <a href="/FLearningCHP/materia/${doc.id}" class="list-group-item list-group-item-action text-primary">${doc.data().nombre}</a>
@@ -95,7 +109,48 @@ function categoria(ctx) {
 }
 
 function materia(ctx) {
-    document.querySelector('main').innerHTML = 'Hoal';
+    var matRef = db.collection("materia").doc(ctx.params.materia).get()
+        .then(function (doc) {
+
+            document.querySelector('main').innerHTML = `
+            <h1>${doc.data().nombre}</h1>
+            <div id="lista_temas">
+
+            </div>
+            `;
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+    db.collection("tema").where("fkid_materia", "==", ctx.params.materia).get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                // doc.data() is never undefined for query doc snapshots
+                document.querySelector('#lista_temas').innerHTML += `
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <div class="card-img">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    ${doc.data().frame}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title">${doc.data().num_list}.- ${doc.data().nombre}</h4>
+                                <!-- <p class="card-text">${doc.data().desc}</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
 
 function notfound() {
