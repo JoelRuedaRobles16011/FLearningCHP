@@ -24,7 +24,7 @@ page('/FLearningCHP/materia/:materia', materia);
 page();
 
 function index() {
-    document.querySelector('main').innerHTML == ``;
+    document.querySelector('main').innerHTML = ``;
     document.querySelector('main').innerHTML += `<div id="videoMain" class="mb-5"></div>`;
 
     db.collection("presentacion").onSnapshot((querySnapshot) => {
