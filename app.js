@@ -27,17 +27,7 @@ function index() {
     document.querySelector('main').innerHTML = ``;
     document.querySelector('main').innerHTML += `<div id="videoMain" class="mb-5"></div>`;
 
-    db.collection("presentacion").onSnapshot((querySnapshot) => {
-        document.querySelector('#videoMain').innerHTML = '';
-
-        querySnapshot.forEach((doc) => {
-            document.querySelector('#videoMain').innerHTML += `
-            <div class="embed-responsive embed-responsive-16by9">
-                ${doc.data().frame}
-            </div>
-            `;
-        });
-    });
+    
 
     document.querySelector('main').innerHTML += `<div id="contentMain" class="card-columns"></div>`;
 
@@ -56,6 +46,18 @@ function index() {
                         </div>                        
                     </div>
                 </div>
+            `;
+        });
+    });
+
+    db.collection("presentacion").onSnapshot((querySnapshot) => {
+        document.querySelector('#videoMain').innerHTML = '';
+
+        querySnapshot.forEach((doc) => {
+            document.querySelector('#videoMain').innerHTML += `
+            <div class="embed-responsive embed-responsive-16by9">
+                ${doc.data().frame}
+            </div>
             `;
         });
     });
